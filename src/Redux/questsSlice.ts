@@ -1,5 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+interface CommentsI {
+    id: number,
+    name: string,
+    email: string,
+    avatar: string,
+    alt: string,
+    comment: string,
+    rating: Array<string>
+}
+
 interface QuestI {
     id: number,
     name: string,
@@ -16,15 +26,18 @@ interface QuestI {
     difficult: string,
     scary: string,
     type: string,
-    young: boolean
+    young: boolean,
+    comments: CommentsI[]
 }
 
 interface StateQuestsI {
-    list: QuestI[]
+    list: QuestI[],
+    currentQuest: object | undefined | null
 }
 
 const initialState: StateQuestsI = {
-    list: []
+    list: [],
+    currentQuest: {}
 }
 
 export const questsSlice = createSlice({
@@ -33,6 +46,13 @@ export const questsSlice = createSlice({
     reducers: {
         setQuests: (state, action) => {
             state.list = action.payload;
+        },
+        findByName: (state, action: PayloadAction<string>) => {
+            let neededQuest = state.list.find(quest => quest.name === action.payload);
+            state.currentQuest = neededQuest;
+        },
+        clearCurrentQuest: (state, action:PayloadAction<boolean>) => {
+            if(action.payload) state.currentQuest = {};
         }
     }
 });
