@@ -7,13 +7,11 @@ export const Home: React.FC = () => {
     
     let dispatch = useAppDispatch();
 
-    const quests = useAppSelector(state => state.quests.list);
+    const quests = useAppSelector(state => state.quests.quests);
 
     useEffect(() => {
         if(!quests.length) dispatch(questsThunk);
     }, [dispatch, quests]);
-
-    console.log(quests)
 
     return (
         <div>

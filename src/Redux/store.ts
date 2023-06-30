@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import questsSlice from "./questsSlice";
+import linksHeaderSlice from "./linksHeaderSlice";
 
 export const store = configureStore({
     reducer: {
-        quests: questsSlice
+        quests: questsSlice,
+        linksHeader: linksHeaderSlice
     }
 });
 

@@ -31,12 +31,12 @@ interface QuestI {
 }
 
 interface StateQuestsI {
-    list: QuestI[],
+    quests: QuestI[],
     currentQuest: object | undefined | null
 }
 
 const initialState: StateQuestsI = {
-    list: [],
+    quests: [],
     currentQuest: {}
 }
 
@@ -44,11 +44,11 @@ export const questsSlice = createSlice({
     name: 'quests',
     initialState,
     reducers: {
-        setQuests: (state, action) => {
-            state.list = action.payload;
+        setQuests: (state, action: PayloadAction<QuestI[]>) => {
+            state.quests = action.payload;
         },
         findByName: (state, action: PayloadAction<string>) => {
-            let neededQuest = state.list.find(quest => quest.name === action.payload);
+            let neededQuest = state.quests.find(quest => quest.name === action.payload);
             state.currentQuest = neededQuest;
         },
         clearCurrentQuest: (state, action:PayloadAction<boolean>) => {
