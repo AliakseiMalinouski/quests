@@ -10,6 +10,9 @@ export const Router: React.FC = () => {
             <Route path="/" element={<Suspense fallback={<Progress color="secondary"/>}>
                 <HomeLazy/>
             </Suspense>}/>
+            <Route path="/quests/page/:pagenumber" element={<Suspense fallback={<Progress color="secondary"/>}>
+
+            </Suspense>}/>
         </Routes>
     )
 }
