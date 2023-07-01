@@ -7,3 +7,9 @@ export interface LinkInterface {
     href: string,
     text: string
 }
+
+export interface ContactSendindDataInteface {
+    name: string,
+    email: string,
+    question: string
+}
